@@ -1,0 +1,169 @@
+//c program to implement a stack using linked list and develop functions to perform push and pop operations.
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+// structure to create a node with data and the next pointer
+
+struct node {
+
+    int info;
+
+    struct node *ptr;
+
+}*top,*top1,*temp;
+
+int count = 0;
+
+// push() operation on a  stack
+
+void push(int data) {
+
+     if (top == null)
+
+    {
+
+        top =(struct node *)malloc(1*sizeof(struct node));
+
+        top->ptr = null;
+
+        top->info = data;
+
+    }
+
+    else
+
+    {
+
+        temp =(struct node *)malloc(1*sizeof(struct node));
+
+        temp->ptr = top;
+
+        temp->info = data;
+
+        top = temp;
+
+    }
+
+    count++;
+
+    printf("node is inserted\n\n");
+
+}
+
+int pop() {
+
+     top1 = top;
+
+    if (top1 == null)
+
+    {
+
+        printf("\nstack underflow\n");
+
+        return -1;
+
+    }
+
+    else
+
+        top1 = top1->ptr;
+
+    int popped = top->info;
+
+    free(top);
+
+    top = top1;
+
+    count--;
+
+    return popped;
+
+}
+
+void display() {
+
+    // display the elements of the stack
+
+    top1 = top;
+
+    if (top1 == null)
+
+    {
+
+        printf("\nstack underflow\n");
+
+        return;
+
+    }
+
+    printf("the stack is \n");
+
+    while (top1 != null)
+
+    {
+
+        printf("%d--->", top1->info);
+
+        top1 = top1->ptr;
+
+    }
+
+    printf("null\n\n");
+
+}
+
+int main() {
+
+    int choice, value;
+
+    printf("\nimplementation of stack using linked list\n");
+
+    while (1) {
+
+        printf("\n1. push\n2. pop\n3. display\n4. exit\n");
+
+        printf("\nenter your choice : ");
+
+        scanf("%d", &choice);
+
+        switch (choice) {
+
+        case 1:
+
+            printf("\nenter the value to insert: ");
+
+            scanf("%d", &value);
+
+            push(value);
+
+            break;
+
+        case 2:
+
+            printf("popped element is :%d\n", pop());
+
+            break;
+
+        case 3:
+
+            display();
+
+            break;
+
+        case 4:
+
+            exit(0);
+
+            break;
+
+        default:
+
+            printf("\nwrong choice\n");
+
+        }
+
+    }
+
+} 
